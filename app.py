@@ -189,10 +189,15 @@ def fetch_competitors(lat, lon, keyword, radius_miles):
         out center tags;
         """
     try:
-        resp = requests.get(
-            "https://overpass-api.de/api/interpreter",
-            params={"data": query}, timeout=35
-        )
+       resp = requests.post(
+    "https://overpass.kumi.systems/api/interpreter",
+    data=query,
+    timeout=35,
+    headers={
+        "Accept": "application/json",
+        "User-Agent": "CompetitorFinder/1.0"
+    }
+)
         resp.raise_for_status()
         data = resp.json()
     except Exception as e:
