@@ -203,7 +203,7 @@ def fetch_competitors(lat, lon, keyword, radius_miles):
     data = resp.json()
 
 except Exception as e:
-    return [], str(e))
+    return [], str(e)
 
     results = []
     for el in data.get("elements", []):
